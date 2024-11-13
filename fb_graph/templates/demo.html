@@ -1,0 +1,46 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ object1.name }}'s Profile</title>
+</head>
+<body>
+    <a href="{% url 'account_logout' %}">Logout</a>
+    <h1>{{ object1.name }} (@{{ object1.username }})</h1>
+    <img src="{{ object1.profile_picture_url }}" alt="{{ object1.name }}'s Profile Picture" width="150">
+    
+    <p><strong>Followers:</strong> {{ object1.followers_count }}</p>
+    <p><strong>Media Count:</strong> {{ object1.media_count }}</p>
+
+    <h2>Insights</h2>
+    <ul>
+        {% for insight in object2.data %}
+            <li>
+                <h3>{{ insight.title }}</h3>
+                <p>{{ insight.description }}</p>
+                <p><strong>Values:</strong></p>
+                <ul>
+                    {% for value in insight.values %}
+                        <li>Value: {{ value.value }} at {{ value.end_time }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Latest Posts</h2>
+    <ul>
+        {% for post in object3.data %}
+            <li>
+                <p><strong>{{ post.caption }}</strong></p>
+                <p><strong>Likes:</strong> {{ post.like_count }} | <strong>Comments:</strong> {{ post.comments_count }}</p>
+                <p><a href="{{ post.permalink }}" target="_blank">View Post</a></p>
+                <img src="{{ post.media_url }}" alt="{{ post.caption }}" width="300">
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
