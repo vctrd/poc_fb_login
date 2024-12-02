@@ -69,6 +69,17 @@ class FacebookGraphAPIHandler:
         self.instagram_medias = self._get(
             f"/{self.instagram_account_id}/media",
             params={
-                "fields": "caption,id,comments_count,like_count,media_type,media_url,permalink,thumbnail_url,timestamp"
+                "fields": "caption,id,comments_count,like_count,media_type,media_product_type,media_url,permalink,thumbnail_url,timestamp"
             },
         )
+        
+        return self.instagram_medias
+    
+    def get_instagram_media_insights(self, media_id, metrics_list):
+
+        return self._get(
+            f"/{media_id}/insights",
+            params={"metric": ",".join(metrics_list), "period": "lifetime"},
+        )
+        
+    

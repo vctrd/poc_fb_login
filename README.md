@@ -13,6 +13,9 @@
 
 [full permissions reference](https://developers.facebook.com/docs/permissions)
 
+#### Story insights
+Beside the live checking of a story insights it is possible to subscribe to un automatic update via a webhook to receveive story insights 1 hour after it has expired [story_insights](https://developers.facebook.com/docs/graph-api/webhooks/reference/instagram/#story_insights)
+
 
 #### Current features
 
@@ -23,6 +26,8 @@
 #### local setup
 
 You need a .env file see .env_sample for the needed variables
+
+use `http://localhost:8000` and not `http://127.0.0.1:8000` to let facebook redirect to the local app in development (with the local IP it refuses to redirect without https)
 
 ##### with `uv`
 
