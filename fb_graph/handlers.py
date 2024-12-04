@@ -75,6 +75,29 @@ class FacebookGraphAPIHandler:
         
         return self.instagram_medias
     
+    
+    def get_instagram_stories(self):
+        """
+        https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/stories
+        
+        
+        Only one caption will be returned per Instagram story, even if more than one caption exists
+        """
+        
+        
+        if not self.instagram_account_id:
+            self.get_first_instagram_account_id()
+
+        self.instagram_stories = self._get(
+            f"/{self.instagram_account_id}/stories",
+            params={
+                "fields": "id,media_type,media_url,permalink,thumbnail_url,timestamp"
+            },
+        )
+        
+        return self.instagram_stories
+    
+    
     def get_instagram_media_insights(self, media_id, metrics_list):
 
         return self._get(

@@ -29,7 +29,8 @@ SECRET_KEY = "django-insecure-%j2_safe2v8f3ufx(1_c(($da2ae+&)l8(fbp76b^%+ouil@6i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
+CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",")
 
 
 # Application definition
@@ -146,6 +147,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # Django all-auth*
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 
 SOCIALACCOUNT_PROVIDERS = {
     "instagram": {},
@@ -160,6 +162,10 @@ SOCIALACCOUNT_PROVIDERS = {
             "pages_show_list",
             "pages_read_engagement",
             "instagram_manage_insights",
+            "email",
+            "instagram_basic",
+            "read_insights",
+            "business_management",
         ],
         "AUTH_PARAMS": {"auth_type": "reauthenticate"},
         "INIT_PARAMS": {"cookie": True},
