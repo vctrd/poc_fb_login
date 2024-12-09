@@ -47,7 +47,7 @@ class FacebookGraphAPIHandler:
         self.instagram_data = self._get(
             f"/{self.instagram_account_id}",
             params={
-                "fields": "followers_count,media_count,name,profile_picture_url,username,website"
+                "fields": "followers_count,media_count,name,profile_picture_url,username,website,biography"
             },
         )
         return self.instagram_data

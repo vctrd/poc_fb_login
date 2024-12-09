@@ -14,6 +14,13 @@
     
     <p><strong>Followers:</strong> {{ object1.followers_count }}</p>
     <p><strong>Media Count:</strong> {{ object1.media_count }}</p>
+    <p><strong>Bio:</strong> {{ object1.biography }}</p>
+    <p><strong>Hashtags:</strong>
+        {% for hashtag in hashtags %}
+            <a href="http://instagram.com/tags/{{ hashtag }}">#{{ hashtag }}</a>
+        {% endfor %}
+    </p>
+
 
     <h2>Insights</h2>
     <ul>
