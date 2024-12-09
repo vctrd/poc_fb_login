@@ -22,5 +22,9 @@ class DemoView(LoginRequiredMixin, TemplateView):
         context["object1"] = fb_graph.instagram_data
         context["object2"] = fb_graph.instagram_insights
         context["object3"] = fb_graph.instagram_medias
+        context["hashtags"] = [item[1:] for item in fb_graph.instagram_data["biography"].split(" ") if item.startswith("#")]
+        for media in fb_graph.instagram_medias["data"]:
+            if "caption" in media:
+                context["hashtags"] += [item[1:] for item in media["caption"].split(" ") if item.startswith("#")]
 
         return context
