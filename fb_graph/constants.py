@@ -49,7 +49,7 @@ MEDIAPRODUCTTYPE_TO_METRICS = {
         Metric.saved,
         Metric.shares,
         Metric.total_interactions,
-        Metric.video_views,
+        # Metric.video_views, deprecated
     ],
     (MediaProductType.FEED, MediaType.IMAGE): [
         Metric.impressions,
